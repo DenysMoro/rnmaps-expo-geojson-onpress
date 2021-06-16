@@ -1,5 +1,5 @@
 import React, {useEffect, useRef} from 'react';
-import {Dimensions, StyleSheet, Text, View} from 'react-native';
+import {Dimensions, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import RNM, { Geojson, MapEvent, Marker } from 'react-native-maps'
 
 const newGeoJson = require('./field_790470_1.json')
@@ -19,8 +19,8 @@ export default function App() {
       <RNM
         ref={mapRef}
         provider="google"
-        showsCompass={false}
-        showsScale={false}
+        showsCompass
+        showsScale
         showsBuildings={false}
         showsTraffic={false}
         showsIndoors={false}
@@ -30,7 +30,9 @@ export default function App() {
           latitudeDelta: 0.007,
           longitudeDelta: 0.007
         }}
+        mapType="satellite"
       >
+        <TouchableOpacity onPress={() => console.log(1)}>
         <Geojson
           geojson={newGeoJson}
           fillColor="transparent"
@@ -38,6 +40,7 @@ export default function App() {
           strokeWidth={2}
           onPress={(test) => console.log(test)}
         />
+        </TouchableOpacity>
       </RNM>
     </View>
   );
