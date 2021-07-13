@@ -34,21 +34,15 @@ export default function App() {
   const [clickCounter, setClickCounter] = useState(0)
   const [geoJSONClickCounter, setGeoJSONClickCounter] = useState(0)
   const mapRef = useRef<RNM>(null)
-  const resetClicked = useRef(true)
 
   const onMapPress = useCallback(() => {
     setClickCounter((prevState) => prevState + 1)
-    if (resetClicked.current) {
-      setIsClicked(false)
-    }
-    resetClicked.current = true
   }, [])
 
   const onGeoJSONPress = useCallback((data) => {
     console.log(1)
     setGeoJSONClickCounter((prevState) => prevState + 1)
     setIsClicked(true)
-    resetClicked.current = false
   }, [])
 
   const onMapReady = useCallback(() => {
