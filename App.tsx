@@ -30,7 +30,6 @@ const fitToCoordsOptions = {
 }
 
 export default function App() {
-  const [isClicked, setIsClicked] = useState(false)
   const [clickCounter, setClickCounter] = useState(0)
   const [geoJSONClickCounter, setGeoJSONClickCounter] = useState(0)
   const mapRef = useRef<RNM>(null)
@@ -40,9 +39,7 @@ export default function App() {
   }, [])
 
   const onGeoJSONPress = useCallback((data) => {
-    console.log(1)
     setGeoJSONClickCounter((prevState) => prevState + 1)
-    setIsClicked(true)
   }, [])
 
   const onMapReady = useCallback(() => {
